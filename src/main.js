@@ -22,7 +22,6 @@ const app = createApp(App)
 
 const serverBaseUrl = import.meta.env.VITE_APP_BASE_URL
 const iconURL = import.meta.env.VITE_ICON_URL
-const taskAPIKey = import.meta.env.VITE_TASK_API_KEY
 app.provide('axios', axios.create({
     baseURL: serverBaseUrl,
     headers: {
@@ -31,8 +30,7 @@ app.provide('axios', axios.create({
     withCredentials: true
   }))
 app.provide('serverBaseUrl', serverBaseUrl)  
-app.provide('iconURL', iconURL)  
-app.provide('taskAPIKey', taskAPIKey)  
+app.provide('iconURL', iconURL)
 
 app.use(Toaster, {
     // Global/Default options

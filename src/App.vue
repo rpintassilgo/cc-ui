@@ -44,19 +44,19 @@ const clickMenuOption = () => {
       </button>
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
-          <li class="nav-item" v-show="!userStore.user">
+          <li class="nav-item" v-show="!userStore?.user">
             <router-link class="nav-link" :to="{ name: 'Register' }" @click="clickMenuOption">
               <i class="bi bi-person-check-fill"></i> Register
             </router-link>
           </li>
-          <li class="nav-item" v-show="!userStore.user">
+          <li class="nav-item" v-show="!userStore?.user">
             <router-link class="nav-link" :class="{ active: $route.name === 'Login' }" :to="{ name: 'Login' }" @click="clickMenuOption">
               <i class="bi bi-box-arrow-in-right"></i> Login
             </router-link>
           </li>
-          <li class="nav-item dropdown" v-show="userStore.user">
+          <li class="nav-item dropdown" v-show="userStore?.user">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img :src="userStore.user.avatar" class="avatar-img" v-if="userStore.user.avatar">
+              <img :src="userStore?.user?.avatar" class="avatar-img" v-if="userStore?.user?.avatar">
               <span class="avatar-text">{{ userStore.user?.name }}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
@@ -89,12 +89,12 @@ const clickMenuOption = () => {
                 <i class="bi bi-cloud-rain"></i> Weather
               </router-link>
             </li>
-            <li class="nav-item" v-if="userStore.user">
+            <li class="nav-item" v-if="userStore?.user">
               <router-link class="nav-link" :class="{ active: $route.name === 'Cities' }" :to="{ name: 'Cities', query: { city: 'Lisbon' }}" @click="clickMenuOption">
                 <i class="bi bi-geo-alt"></i> Search city
               </router-link>
             </li>
-            <li class="nav-item" v-if="userStore.user">
+            <li class="nav-item" v-if="userStore?.user">
               <router-link class="nav-link" :class="{ active: $route.name === 'Tasks' }" :to="{ name: 'Tasks' }" @click="clickMenuOption">
                 <i class="bi bi-calendar"></i> Tasks
               </router-link>
@@ -110,12 +110,12 @@ const clickMenuOption = () => {
                   <i class="bi bi-person-check-fill"></i> Register
                 </a>
               </li>
-              <li class="nav-item" v-show="!userStore.user">
+              <li class="nav-item" v-show="!userStore?.user">
                 <router-link class="nav-link" :class="{ active: $route.name === 'Login' }" :to="{ name: 'Login' }" @click="clickMenuOption">
                   <i class="bi bi-box-arrow-in-right"></i> Login
                 </router-link>
               </li>
-              <li class="nav-item dropdown" v-show="userStore.user">
+              <li class="nav-item dropdown" v-show="userStore?.user">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <span class="avatar-text">User Name</span>
                 </a>
