@@ -20,6 +20,7 @@ import "bootstrap"
 
 const app = createApp(App)
 
+const port = process.env.PORT || 3000;
 const serverBaseUrl = import.meta.env.VITE_APP_BASE_URL
 const iconURL = import.meta.env.VITE_ICON_URL
 app.provide('axios', axios.create({
@@ -50,7 +51,12 @@ app.use(router)
 
 app.use(express.static(path.join(__dirname, 'dist')));
 app.get('*', (req, res) => {
+  console.log(`Serving request for ${req.url}`);
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 
 app.mount('#app')
