@@ -20,7 +20,7 @@ import "bootstrap"
 
 const app = createApp(App)
 
-const serverBaseUrl = `${window.location.origin}/api`
+const serverBaseUrl = import.meta.env.VITE_APP_BASE_URL
 const iconURL = import.meta.env.VITE_ICON_URL
 app.provide('axios', axios.create({
     baseURL: serverBaseUrl,
@@ -47,5 +47,10 @@ app.component('Dialog', Dialog);
 
 app.use(createPinia())
 app.use(router)
+
+app.use(express.static(path.join(__dirname, 'dist')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 
 app.mount('#app')
